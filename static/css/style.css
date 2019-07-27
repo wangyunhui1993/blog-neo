@@ -1,4 +1,4 @@
-@charset "gb2312";
+@charset "utf-8";
 /* CSS Document */
 h1.t_nav span{float:right; color:#999}
 h1.t_nav { border-bottom: #F1F1F1 1px solid; font-size: 12px; font-weight: normal; line-height: 40px; height: 40px; }

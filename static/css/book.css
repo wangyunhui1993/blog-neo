@@ -1,4 +1,4 @@
-@charset "gb2312";
+@charset "utf-8";
 /* CSS Document */
 .aboutcon{ color:#696969;background: url(../images/aboutphoto.jpg) no-repeat right 360px;}
 h1.t_nav { border-bottom: #F1F1F1 1px solid; font-size: 12px; font-weight: normal; line-height: 40px; height: 40px; }
