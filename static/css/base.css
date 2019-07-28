@@ -49,5 +49,5 @@ a.tqq img {margin: 5px 0 0 3px;}
 input.inputSub {background: #2EA4F3;color: #fff;border: none;padding: 2px 4px;border-radius: 3px;cursor: pointer;}
 
 .overflowHidden_3{
-	text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;
+	text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;height: 60px;
 }
