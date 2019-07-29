@@ -10,7 +10,7 @@ a:link, a:visited {text-decoration: none; color: #333;}
 .blank { height: 5px; overflow: hidden; width: 100%; margin: auto; clear: both }
 .box{ width:1000px; margin:auto; overflow:hidden}
 header { width: 1000px; margin: auto; height: 80px; position: relative; overflow: hidden }
-#logo a { width: 260px; height: 60px; margin: 10px 0 0 0; position: absolute; background: url(../images/logo.jpg) no-repeat; display: block }
+#logo a { width: 130px; height: 60px; margin: 10px 0 0 0; position: absolute; background: url(../images/logo.jpg) no-repeat; display: block }
 nav { float: right; width: 100%; margin: 30px 0 0 0; text-align: right }
 nav a { position: relative; display: inline-block; font-size: 18px; font-family: "Î¢ÈíÑÅºÚ", Arial, Helvetica, sans-serif; }
 nav a:hover { text-decoration: none }
@@ -50,4 +50,9 @@ input.inputSub {background: #2EA4F3;color: #fff;border: none;padding: 2px 4px;bo
 
 .overflowHidden_3{
 	text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;height: 60px;
+}
+.body-content{
+	height: -moz-calc(100vh - 121px);
+	height: -webkit-calc(100vh - 121px);
+	height: calc(100vh - 121px);
 }

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>neo</title>
+		<title>neo博客首页</title>
 		<meta name="keywords" content="个人博客,neo,工具,neo" />
 		<meta name="description" content="neo个人博客，前端开发工程师。" />
 		<link href="static/css/base.css" rel="stylesheet">
@@ -17,10 +17,7 @@
 	<body>
 		<header>
 			<div id="logo"><a href="/"></a></div>
-			<nav class="topnav" id="topnav"><a href="index.html"><span>首页</span><span class="en">Protal</span></a><a href="about.html"><span>关于我</span><span
-					 class="en">About</span></a><a href="newlist.html"><span>慢生活</span><span class="en">Life</span></a><a href="moodlist.html"><span>碎言碎语</span><span
-					 class="en">Doing</span></a><a href="share.html"><span>模板分享</span><span class="en">Share</span></a><a href="knowledge.html"><span>学无止境</span><span
-					 class="en">Learn</span></a><a href="book.html"><span>留言版</span><span class="en">Gustbook</span></a></nav>
+			<nav class="topnav" id="topnav">
 			</nav>
 		</header>
 		<div class="banner">
@@ -73,65 +70,70 @@
 			</aside>
 		</article>
 		<div class="pagelist">
-			<a href="javascript:void(0);" onclick="page(2)">上一页</a>&nbsp;&nbsp;当前页：<span>1</span>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="page(2)">下一页</a>
+			<a href="javascript:void(0);" onclick="page(2)">上一页</a>&nbsp;&nbsp;当前页：<span>1</span>&nbsp;&nbsp;<a href="javascript:void(0);"
+			 onclick="page(2)">下一页</a>
 		</div>
 		<footer>
-			<p>Design by DanceSmile <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备11002373号-1</a> <a href="/">网站统计</a></p>
+			<p>浙ICP备18006570号</p>
 		</footer>
 		<script src="static/js/silder.js"></script>
-			<script type="text/javascript">
-				function getArticles(page){
-							request("/blog_query", {
-							pageNum: page,
-							pageSize:15
-						},
-						function(data) {
-							if (data.err_code === 0) {
-								if(data.list.length < 15  && page!==1){
-									alert('已经是最后一页了');
-									return false;
-								}
-								var evalText = doT.template($("#articleList").text());
-								$("#bloglist").html(evalText(data.list));
-								var evalText1 = doT.template($("#pageList").text());
-								var pages={
-									current:page,
-									size:data.list.length
-								}
-								$(".pagelist").html(evalText1(pages));
+		<script type="text/javascript">
+			function getArticles(page) {
+				request("/blog_query", {
+						pageNum: page,
+						pageSize: 15
+					},
+					function(data) {
+						if (data.err_code === 0) {
+							if (data.list.length < 15 && page !== 1) {
+								alert('已经是最后一页了');
+								return false;
 							}
-						});
-				}
-				function getArticlesClick(){
-							request("/blog_click", {},
-						function(data) {
-							if (data.err_code === 0) {
-								var evalText = doT.template($("#articleClick").text());
-								$("#articleclickList").html(evalText(data.list));
+							var evalText = doT.template($("#articleList").text());
+							$("#bloglist").html(evalText(data.list));
+							var evalText1 = doT.template($("#pageList").text());
+							var pages = {
+								current: page,
+								size: data.list.length
 							}
-						});
-				}
-				function getArticlesNew(){
-							request("/blog_new", {},
-						function(data) {
-							if (data.err_code === 0) {
-								var evalText = doT.template($("#articleNew").text());
-								$("#articlenewList").html(evalText(data.list));
-							}
-						});
-				}
-		getArticles(1);
-		getArticlesNew()
-		getArticlesClick();
-		function upPage(pages){
-			getArticles(--pages)
-		}
-		function downPage(pages){
-			getArticles(++pages)
-		}	
-			</script>
-			<script id="articleList" type="text/x-dot-template">
-				{{ for(var prop of it) { }}
+							$(".pagelist").html(evalText1(pages));
+						}
+					});
+			}
+
+			function getArticlesClick() {
+				request("/blog_click", {},
+					function(data) {
+						if (data.err_code === 0) {
+							var evalText = doT.template($("#articleClick").text());
+							$("#articleclickList").html(evalText(data.list));
+						}
+					});
+			}
+
+			function getArticlesNew() {
+				request("/blog_new", {},
+					function(data) {
+						if (data.err_code === 0) {
+							var evalText = doT.template($("#articleNew").text());
+							$("#articlenewList").html(evalText(data.list));
+						}
+					});
+			}
+			getArticles(1);
+			getArticlesNew()
+			getArticlesClick();
+
+			function upPage(pages) {
+				getArticles(--pages)
+			}
+
+			function downPage(pages) {
+				getArticles(++pages)
+			}
+		</script>
+		<script id="articleList" type="text/x-dot-template">
+			{{ for(var prop of it) { }}
 				<h3>{{= prop.article_name}}</h3>
 				<figure><img src="static/picture/001.png"></figure>
 				<ul>
@@ -142,7 +144,7 @@
 				{{ } }}
 		</script>
 		<script id="pageList" type="text/x-dot-template">
-				{{?  it.current!==1}}
+			{{?  it.current!==1}}
 				<a href="javascript:void(0);" onclick="upPage({{=it.current}})">上一页</a>
 				{{?}}
 				&nbsp;&nbsp;当前页：
@@ -155,8 +157,8 @@
 				<li><a href="./detail.html?id={{=prop.article_id}}" title="{{=prop.article_name}}" target="_blank">{{=prop.article_name}}</a></li>
 				{{ } }}
 	</script>
-	<script id="articleNew" type="text/x-dot-template">
-		{{ for(var prop of it) { }}
+		<script id="articleNew" type="text/x-dot-template">
+			{{ for(var prop of it) { }}
 			<li><a href="./detail.html?id={{=prop.article_id}}" title="{{=prop.article_name}}" target="_blank">{{=prop.article_name}}</a></li>
 			{{ } }}
 </script>
