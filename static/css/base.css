@@ -52,7 +52,7 @@ input.inputSub {background: #2EA4F3;color: #fff;border: none;padding: 2px 4px;bo
 	text-overflow: -o-ellipsis-lastline;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;height: 60px;
 }
 .body-content{
-	height: -moz-calc(100vh - 121px);
-	height: -webkit-calc(100vh - 121px);
-	height: calc(100vh - 121px);
+	min-height: -moz-calc(100vh - 121px);
+	min-height: -webkit-calc(100vh - 121px);
+	min-height: calc(100vh - 121px);
 }

@@ -9,18 +9,31 @@
 <script src="static/js/modernizr.js"></script>
 <![endif]-->
 <link href="static/css/base.css" rel="stylesheet">
+<link href="static/css/loading.css" rel="stylesheet">
 </head>
 <body>
 <header>
   <div id="logo"><a href="/"></a></div>
   <nav class="topnav" id="topnav"></nav>
 </header>
-	<div class="body-content">
+	<div style="height: calc(100vh - 121px);position: relative;">
 		<iframe src="http://www.2gty.com/apiurl/yun.php?url=" width="100%" height="100%" style="border: none;"></iframe>
+		<div class="loading">
+			<div class="arc"></div>
+			<h1><span></span></h1>
+		</div>
 	</div>
 <footer>
 <p>浙ICP备18006570号</p>
 </footer>
 <script src="static/js/silder.js"></script>
+<script type="text/javascript">
+	document.getElementsByClassName('loading')[0].style.display = 'block'
+	document.getElementsByTagName('iframe')[0].onload = function(){
+		console.log(1111)
+		document.getElementsByClassName('loading')[0].style.display = 'none'
+	}
+
+</script>
 </body>
 </html>

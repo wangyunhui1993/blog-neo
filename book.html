@@ -1,67 +1,110 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>neo个人博客网站—一个站在web前段设计之路的女技术员个人博客网站</title>
-<meta name="keywords" content="个人博客,neo个人博客,个人博客模板,neo" />
-<meta name="description" content="neo个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
-<link href="static/css/base.css" rel="stylesheet">
-<link href="static/css/book.css" rel="stylesheet">
-<!--[if lt IE 9]>
+	<head>
+		<meta charset="utf-8">
+		<title>留言版</title>
+		<meta name="keywords" content="个人博客,neo个人博客,个人博客模板,neo" />
+		<meta name="description" content="neo个人博客，前端开发工程师。" />
+		<link href="static/css/base.css" rel="stylesheet">
+		<link href="static/css/book.css" rel="stylesheet">
+		<!--[if lt IE 9]>
 <script src="static/js/modernizr.js"></script>
 <![endif]-->
-</head>
-<body>
-<header>
-  <div id="logo"><a href="/"></a></div>
-  <nav class="topnav" id="topnav"></nav>
-</header>
-<div class="body-content book">
-	<h2 class="title_tj">
-    <p>留言</p>
-  </h2>
-  <div class="user_mesg">
-    <form >
-      <div class="item">
-				<span>姓名（昵称）</span>
-				<div class="item-right">
-					<input type="text" value="" id="user_name">
-				</div>
-				<div style="clear: both"></div>
-      </div>
-      <div class="item">
-				<span>留言</span>
-				<div class="item-right">
-					<textarea id="message_content" class="Message" cols="30" rows="10"></textarea>
-				</div>
-				<div style="clear: both"></div>
-      </div>
-      <div class="item">
-        <input type="button" class="btn-mesSubmit" id="imgBtnUp1" value="提交留言">
-        <div style="clear: both"></div>
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/doT.js"></script>
+		<script src="static/js/api.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="logo"><a href="/"></a></div>
+			<nav class="topnav" id="topnav"></nav>
+		</header>
+		<div class="body-content book">
+			<h2 class="title_tj">
+				<p>留言</p>
+			</h2>
+			<div class="user_mesg">
+				<form>
+					<div class="item">
+						<span>姓名（昵称）</span>
+						<div class="item-right">
+							<input type="text" value="" id="user_name">
+						</div>
+						<div style="clear: both"></div>
+					</div>
+					<div class="item">
+						<span>留言</span>
+						<div class="item-right">
+							<textarea id="message_content" class="Message" cols="30" rows="10"></textarea>
+						</div>
+						<div style="clear: both"></div>
+					</div>
+					<div class="item">
+						<input type="button" class="btn-mesSubmit" id="issueBtn" value="提交留言">
+						<div style="clear: both"></div>
+					</div>
+				</form>
 			</div>
-    </form>
-  </div>
-  <div class="showList">
-    <div class="fb">
-      <ul>
-        <span class="tximg"><img src="./static/images/tx5.jpg"></span>
-        <p class="fbtime"><span>
-          2019-07-29</span> cirzear</p>
-        <p class="fbinfo">站长啊，你是真滴牛批</p>
-      </ul>
-    </div>
-    <div class="hf">
-      <ul>
-        <p class="zzhf"><font color="#FF0000">站长回复:</font>hello world!</p>
-      </ul>
-    </div>
-  </div>
+			<div class="showList" id="showList">
+				
+			</div>
 
-</div>
-<footer>
-  <p>浙ICP备18006570号</p>
-  </footer>
-  <script src="static/js/silder.js"></script>
+		</div>
+		<footer>
+			<p>浙ICP备18006570号</p>
+		</footer>
+		<script src="static/js/silder.js"></script>
+		<script type="text/javascript">
+			function getMessageList() {
+				request("/query_message", {},
+					function(data) {
+						if (data.err_code === 0) {
+							var evalText = doT.template($("#messageList").text());
+							$("#showList").html(evalText(data.list));
+						}
+					});
+			}
+			getMessageList()
+			$('#issueBtn').click(function(){
+					if($('#message_content').val().trim()){
+						let info = {
+							user_name:$('#user_name').val().trim(),
+							message_content:$('#message_content').val().trim()
+						}
+						issueMessage(info);
+					}else{
+						alert('请输入留言内容');
+					}
+			});
+			function issueMessage(info) {
+				request("/issue_message", info,
+					function(data) {
+						if (data.err_code === 0) {
+							getMessageList();
+						}
+					});
+			}
+		</script>
+		<script id="messageList" type="text/x-dot-template">
+			{{ for(var prop of it) { }}
+		<div class="fb">
+		  <ul>
+		    <span class="tximg"><img src="./static/images/tx5.jpg"></span>
+		    <p class="fbtime"><span>
+		      {{=prop.message_stay_time}}</span> {{=prop.user_name}}</p>
+		    <p class="fbinfo">{{=prop.message_content}}</p>
+		  </ul>
+		</div>
+		{{? false}}
+		<div class="hf">
+			<ul>
+				<p class="zzhf">
+					<font color="#FF0000">站长回复:</font>hello world!
+				</p>
+			</ul>
+		</div>
+		{{?}}
+		{{ } }}
+		</script>
   </body>
   </html>
