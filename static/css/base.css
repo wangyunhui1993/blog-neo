@@ -1,7 +1,7 @@
 @charset "gb2312";
 /* CSS Document */
 * { margin: 0; padding: 0 }
-body { font: 12px "ËÎÌו", Arial, Helvetica, sans-serif; color: #756F71 }
+body { font: 14px "ËÎÌו", Arial, Helvetica, sans-serif; color: #756F71 }
 img { border: 0; display: block }
 ul { list-style: none; }
 a:link, a:visited {text-decoration: none; color: #333;}
@@ -56,3 +56,18 @@ input.inputSub {background: #2EA4F3;color: #fff;border: none;padding: 2px 4px;bo
 	min-height: -webkit-calc(100vh - 121px);
 	min-height: calc(100vh - 121px);
 }
+h1.t_nav {
+    border-bottom: #F1F1F1 1px solid;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 40px;
+    height: 40px;
+    margin: 20px auto;
+    width: 1000px;
+}
+h1.t_nav span {
+    float: right;
+    color: #999;
+}
+
+
