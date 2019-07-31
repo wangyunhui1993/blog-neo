@@ -35,6 +35,7 @@
 }
 .i-head p {
     margin: 2px;
+	text-align: center;
 }
 .i-body {
     background: #fff;
@@ -47,9 +48,6 @@
 }
 .hot {
     float: left;
-}
-p {
-    margin: 0 0 10px;
 }
 .goto {
     float: right;

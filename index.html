@@ -5,6 +5,8 @@
 		<title>neo博客首页</title>
 		<meta name="keywords" content="个人博客,neo,工具,neo" />
 		<meta name="description" content="neo个人博客，前端开发工程师。" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link href="static/css/base.css" rel="stylesheet">
 		<link href="static/css/index.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="static/css/page.css">
@@ -102,6 +104,7 @@
 					function(data) {
 						if (data.err_code === 0) {
 							var evalText = doT.template($("#articleList").text());
+							console.log(evalText(data.list))
 							$("#bloglist").html(evalText(data.list));
 							getpages(pages.pageSize,data.total,pages.pageNum);
 						}
@@ -127,9 +130,12 @@
 						}
 					});
 			}
-			getArticles();
-			getArticlesNew()
-			getArticlesClick();
+			$(function(){
+				getArticles();
+				getArticlesNew()
+				getArticlesClick();
+			});
+			
 
 			$(document).on("click", "[page-id]", function($event){ 
 					pages.pageNum = $event.currentTarget.innerHTML
@@ -137,13 +143,12 @@
 				}); 	
 				
 			</script>
-		</script>
 		<script id="articleList" type="text/x-dot-template">
 			{{ for(var prop of it) { }}
 				<h3>{{= prop.article_name}}</h3>
 				<figure><img src="static/picture/001.png"></figure>
 				<ul>
-					<div class="overflowHidden_3">{{= prop.article_content}}</div>
+					<div class="overflowHidden_3">{{! prop.article_content}}</div>
 					<a title="/"  href="./detail.html?id={{=prop.article_id}}" target="_blank" class="readmore">阅读全文>></a>
 				</ul>
 				<p class="dateview"><span>{{=prop.article_time}}</span><span>Author：neo</span></p>
