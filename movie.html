@@ -5,10 +5,13 @@
 <title>neo电影</title>
 <meta name="keywords" content="neo,电影" />
 <meta name="description" content="搜索你想看的电影" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!--[if lt IE 9]>
 <script src="static/js/modernizr.js"></script>
 <![endif]-->
 <link href="static/css/base.css" rel="stylesheet">
+<link href="static/css/index.css" rel="stylesheet">
 <link href="static/css/loading.css" rel="stylesheet">
 </head>
 <body>
@@ -16,16 +19,13 @@
   <div id="logo"><a href="/"></a></div>
   <nav class="topnav" id="topnav"></nav>
 </header>
-	<div style="height: calc(100vh - 121px);position: relative;">
+	<div style="height: calc(100vh - 80px);position: relative;">
 		<iframe src="http://www.2gty.com/apiurl/yun.php?url=" width="100%" height="100%" style="border: none;"></iframe>
 		<div class="loading">
 			<div class="arc"></div>
 			<h1><span></span></h1>
 		</div>
 	</div>
-<footer>
-<p>浙ICP备18006570号</p>
-</footer>
 <script src="static/js/silder.js"></script>
 <script type="text/javascript">
 	document.getElementsByClassName('loading')[0].style.display = 'block'

@@ -1,5 +1,5 @@
-// var urlBase = "http://106.15.178.216:3000"
-var urlBase = "http://localhost:3000"
+var urlBase = "http://106.15.178.216:3000"
+// var urlBase = "http://localhost:3000"
 
 function request(url, info, callback) {
 	$.ajax({

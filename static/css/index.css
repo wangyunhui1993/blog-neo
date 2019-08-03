@@ -202,7 +202,7 @@ h2.title_tj p { background: #fff; width: 90px }
 .bloglist figure { float: left; width: 183px; }
 .bloglist figure img { padding: 4px; border: #f4f2f2 1px solid; width: 175px; }
 .bloglist ul { float: left; width: 520px; margin: 10px 0px 0 15px; line-height: 20px; }
-.dateview { width: 695px; overflow: hidden; clear: both; margin: 10px 0 0 0; display: inline-block; background: #f6f6f6 url(../images/time.jpg) 15px center no-repeat; line-height: 26px; height: 26px; color: #838383; padding-left: 25px }
+.dateview { width: 695px; overflow: hidden; clear: both; margin: 10px 0 0 0; display: inline-block; background: #f6f6f6 url(../images/time.jpg) 15px center no-repeat; line-height: 26px; height: 26px; color: #838383; padding-left: 25px ;box-sizing: border-box;}
 .dateview span { margin: 0 10px; }
 .dateview span a { color: #099B43; }
 a.readmore { background: #fd8a61; color: #fff; padding: 5px 10px; float: right; margin: 20px 0 0 0 }
@@ -251,15 +251,21 @@ footer { width: 100% }
 }
 @media only screen and (max-width: 769px) {
 header { width: 100%; margin: auto; height: auto }
-#logo { width: 100%; height: 60px; }
+#logo { width: 100%; height: 60px; display: none;}
 nav { float: left; width: 100%; margin: 30px 0 0 0; text-align: center }
+.t_nav{
+	display: none;
+}
+.bloglist{
+	
+}
 .topnav a { margin: 0 5px; padding: 0 1px; }
 .banner { width: 100% }
 .template .box { width: 100% }
 .template ul li img { width: 100px; }
 .template ul li span { width: 100px; }
 article { width: 100% }
-.bloglist { background: none; margin: auto; width: 100%; overflow: hidden }
+.bloglist { background: none; margin: auto; width: 100% !important; overflow: hidden;padding: 0 5px;box-sizing: border-box; }
 .weather, .weixin, .links, .website ,.guanzhu{ display: none }
 .bloglist h3 { margin: 10px 0 5px 0; color: #333; display: block }
 .dateview { width: 100%; }
