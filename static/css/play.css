@@ -1,0 +1,54 @@
+.playlist{
+	width: 1000px;
+	margin: 0 auto;
+}
+.open {
+    background: #EEE;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-size: 3em;
+    float: left;
+    display: inline-block;
+    transform-style: preserve-3d;
+    font-weight: 700;
+    margin: 5px 10px 0 6px;
+}
+.item {
+    width: 25%;
+    height: auto;
+    float: left;
+    list-style: none;
+    padding: 1em;
+    color: #3D464D;
+}
+.i-head {
+    background: #fff;
+    height: auto;
+    line-height: 3.5em;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    box-shadow: 0 1px 2px #ccc;
+    border: 1px solid #e0e0e0;
+}
+.open5 {
+    text-shadow: 5px -5px #C3D377, 4px -4px #fff;
+}
+.i-head p {
+    margin: 2px;
+	text-align: center;
+}
+.i-body {
+    background: #fff;
+    height: auto;
+    margin: 0;
+    padding: .3em .5em 2em .5em;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+.hot {
+    float: left;
+}
+.goto {
+    float: right;
+}

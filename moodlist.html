@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>neo碎言碎语</title>
+		<meta name="keywords" content="个人博客,neo,工具,neo" />
+		<meta name="description" content="neo个人博客，前端开发工程师。" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link href="static/css/base.css" rel="stylesheet">
+		<link href="static/css/index.css" rel="stylesheet">
+		<link href="static/css/mood.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="static/css/page.css">
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+		<!--[if lt IE 9]>
+<script src="static/js/modernizr.js"></script>
+<![endif]-->
+		<script src="static/js/jquery.min.js"></script>
+		<script src="static/js/doT.js"></script>
+		<script src="static/js/api.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="logo"><a href="./"></a></div>
+			<nav class="topnav" id="topnav"></nav>
+		</header>
+		<div class="body-content">
+			<div class="moodlist">
+				<h1 class="t_nav"><span>众里寻他千百度，蓦然回首，那人却在，灯火阑珊处。</span></h1>
+				<div class="bloglist" id="bloglist">
+				</div>
+			</div>
+			<div style="text-align: center;margin:0 auto;">
+				<div id="pager" class="pager clearfix">
+				</div>
+			</div>
+		</div>
+		
+		<footer>
+			<p>浙ICP备18006570号</p>
+		</footer>
+		<script src="static/js/silder.js"></script>
+		
+		<script src="static/js/jquery.z-pager.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			 function getpages(size,total,current) {
+				var pagerrrr = $("#pager").zPager({
+					totalData: total,
+					pageData:size,
+					current:current,
+					htmlBox: $('#wraper'),
+					btnShow: true,
+					ajaxSetData: false
+				});
+			}
+		</script>
+		
+		<script type="text/javascript">
+			var pages = {
+				pageNum:1,
+				pageSize:10
+			};
+			function getMoodlist(info) {
+				request("/query_shuoshuo", info,
+					function(data) {
+						if (data.err_code === 0) {
+							var evalText = doT.template($("#moodlist").text());
+							$("#bloglist").html(evalText(data.list));
+							getpages(pages.pageSize,data.total,info.pageNum);
+						}
+					})
+			}
+			getMoodlist(pages)
+			
+		$(document).on("click", "[page-id]", function($event){ 
+				pages.pageNum = $event.currentTarget.innerHTML
+				getMoodlist(pages)
+			}); 	
+			
+		</script>
+		<script id="moodlist" type="text/x-dot-template">
+			{{ for(var prop of it) { }}
+			<ul class="arrow_box">
+			 <img src="{{=prop.cover}}">
+			  <p>{{=prop.shuoshuo}}</p>
+			  <span class="dateview">{{=prop.shuo_time}}</span>
+			</ul>
+		{{ } }}
+		</script>
+	</body>
+</html>

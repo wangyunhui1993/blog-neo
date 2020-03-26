@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/template-web.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="content"></div>
+<script id="test" type="text/html">  
+<h1>{{title}}</h1>   
+
+
+</script>
+
+<script>
+//数据必须是一个对象
+var data = {
+    title: '基本例子',
+    isAdmin: true,
+    list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他'],
+    value: '<span style="color:#F00">hello world!</span>'
+};
+//过滤器注册
+// template.helper('format', function (date, format) {
+//   // 对传入的data进行处理再 return 出去
+//   return format;
+// });
+//渲染
+var html = template('test', data);
+document.getElementById('content').innerHTML = html;
+</script>
+	</body>
+</html>
