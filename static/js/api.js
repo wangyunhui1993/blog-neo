@@ -1,5 +1,6 @@
-var urlBase = "http://neo123.cn:3000"
+// var urlBase = "http://neo123.cn:3000"
 // var urlBase = "http://localhost:3000"
+var urlBase = "https://localhost:3001"
 
 function request(url, info, callback) {
 	$.ajax({
